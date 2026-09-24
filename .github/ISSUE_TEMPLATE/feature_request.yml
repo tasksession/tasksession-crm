@@ -1,0 +1,17 @@
+name: Feature request
+description: Suggest an idea for TaskSession CRM
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Your idea
+      description: How should it work?
+    validations:
+      required: true
