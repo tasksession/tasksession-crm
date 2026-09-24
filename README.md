@@ -42,3 +42,10 @@ This repository contains the **TaskSession CRM Free Edition**. For Pro features 
 
 - Bugs and feature requests: open an [Issue](../../issues)
 - Website: [tasksession.com](https://tasksession.com)
+
+## License
+
+TaskSession CRM Free Edition is licensed under the [GNU Affero General Public License v3.0 (AGPL-3.0)](LICENSE).
+If you modify it and distribute it or run it as a network service, you must make your modified source code available under the same license.
+
+"TaskSession" name and logo are not covered by this license.
