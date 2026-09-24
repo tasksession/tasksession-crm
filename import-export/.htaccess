@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+Options -MultiViews
+
+# Canonical: GET/HEAD history.php → history
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s?]*?/)history\.php[\s?]
+RewriteRule ^history\.php$ %1history [R=302,L,QSA]
+
+# history → history.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^history/?$ history.php [L,QSA]
+
+# Do not pretty-strip module import/export POST/download endpoints
+# (handled as real files; no rewrite needed)
+</IfModule>

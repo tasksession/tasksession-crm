@@ -1,0 +1,7 @@
+Name,Position,Company,Description,Country,Currency,Lead Value,Zip,City,State,Address,Status,Source,Priority,Email,Phone,Website,Notes
+Sample Name,Manager,Sample Company,Sample description,United States,USD,1000.00,10001,New York,NY,123 Main St,New,Website,High,example@domain.com,+1 555-0000,https://example.com,Sample notes
+John Doe,Director,Tech Corp,Enterprise client,Canada,CAD,5000.00,M5H 2N2,Toronto,ON,456 Bay St,Qualified,Referral,Medium,john@techcorp.com,+1 416-555-1234,https://techcorp.com,Follow up next week
+Jane Smith,CEO,Startup Inc,Early stage startup,United States,USD,2500.00,94102,San Francisco,CA,789 Market St,New,Website,High,jane@startup.com,+1 415-555-5678,https://startup.com,Interested in premium plan
+Michael Johnson,Sales Manager,Global Solutions,International expansion,United Kingdom,GBP,7500.00,SW1A 1AA,London,England,10 Downing St,Qualified,Email,High,michael@globalsolutions.co.uk,+44 20 7946 0958,https://globalsolutions.co.uk,Potential enterprise deal
+Sarah Williams,Marketing Director,Digital Agency,Marketing services,United States,USD,3000.00,90210,Beverly Hills,CA,456 Rodeo Dr,New,Website,Medium,sarah@digitalagency.com,+1 310-555-9012,https://digitalagency.com,Requested demo
+

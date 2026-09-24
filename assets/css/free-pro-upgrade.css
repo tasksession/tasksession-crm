@@ -1,0 +1,125 @@
+/* TaskSession Free — central Pro upgrade card */
+.ts-pro-upgrade-wrap {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: calc(100vh - 180px);
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 40px 20px 56px;
+    box-sizing: border-box;
+    background: transparent;
+    border-radius: 0;
+    text-align: center;
+}
+
+.ts-pro-upgrade-card {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 40px 32px 36px;
+    background: #ffffff;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(34, 45, 50, 0.08);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.ts-pro-upgrade-icon {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 18px;
+    border-radius: 16px;
+    background: #e8f4ff;
+    color: #0094ff;
+}
+
+.ts-pro-upgrade-icon svg {
+    display: block;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    stroke: #0094ff;
+}
+
+.ts-pro-upgrade-feature {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0094ff;
+    text-align: center;
+}
+
+.ts-pro-upgrade-heading {
+    margin: 0 0 12px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #222d32 !important;
+    text-align: center;
+    position: static !important;
+}
+
+.ts-pro-upgrade-desc {
+    margin: 0 auto 8px;
+    max-width: 360px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #495057;
+    text-align: center;
+}
+
+.ts-pro-upgrade-body {
+    margin: 0 auto 26px;
+    max-width: 360px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #6c757d;
+    text-align: center;
+}
+
+.ts-pro-upgrade-card .primary-btn {
+    margin: 0 auto;
+}
+
+.ts-pro-badge {
+    display: inline-block !important;
+    padding: 2px 5px !important;
+    font-size: 9px !important;
+    font-weight: 600 !important;
+    line-height: 1.35 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em;
+    border-radius: 999px !important;
+    background: var(--primary-color, #0094ff) !important;
+    color: #fff !important;
+    vertical-align: middle;
+    text-align: center !important;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary-color, #0094ff) 45%, transparent);
+    animation: sidebarNewBadgePulse 2.2s ease-in-out infinite;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-left: auto !important;
+    margin-right: 4px !important;
+    flex-shrink: 0;
+}
+
+@media (max-width: 576px) {
+    .ts-pro-upgrade-wrap {
+        min-height: auto;
+        padding: 24px 12px 40px;
+    }
+    .ts-pro-upgrade-card {
+        padding: 28px 18px 24px;
+    }
+    .ts-pro-upgrade-heading {
+        font-size: 19px;
+    }
+}

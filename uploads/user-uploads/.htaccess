@@ -1,0 +1,82 @@
+# SECURITY: Block ALL direct access to user-uploads folder
+# This prevents unauthorized access to private user images
+
+# Block all direct access to this directory
+Require all denied
+Order deny,allow
+Deny from all
+
+# Prevent directory listing and browsing
+Options -Indexes -MultiViews
+
+# Block access to all file types
+<FilesMatch ".*">
+    Require all denied
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Block access to sensitive file types specifically
+<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|jsp|asp|sh|cgi|htaccess|htpasswd|ini|log|sql|bak|backup|tmp|temp)$">
+    Require all denied
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Block access to all image types
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$">
+    Require all denied
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Block access to all document types
+<FilesMatch "\.(pdf|doc|docx|xls|xlsx|ppt|pptx|txt|rtf|odt|ods|odp)$">
+    Require all denied
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Block access to all archive types
+<FilesMatch "\.(zip|rar|7z|tar|gz|bz2)$">
+    Require all denied
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Block access to all media types
+<FilesMatch "\.(mp3|mp4|avi|mov|wmv|flv|wav|ogg|webm)$">
+    Require all denied
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Prevent search engine indexing
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "no-referrer"
+</IfModule>
+
+# Block robots.txt access to this directory
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^robots\.txt$ - [F,L]
+</IfModule>
+
+# Block common bot user agents
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_USER_AGENT} (bot|crawler|spider|scraper|indexer) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Block access from external referrers (optional - uncomment if needed)
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTP_REFERER} !^$
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?yourdomain\.com [NC]
+#     RewriteRule .* - [F,L]
+# </IfModule> 

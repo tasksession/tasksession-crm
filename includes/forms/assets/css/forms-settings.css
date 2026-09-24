@@ -1,0 +1,206 @@
+/* Forms admin — extras on top of ai/assets/css/settings.css (same shell classes) */
+
+.ai-settings-panel-head .forms-panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  margin-top: 0.15rem;
+}
+.ai-settings-panel-head .forms-panel-actions .primary-btn,
+.ai-settings-panel-head .forms-panel-actions .outline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+/* Primary + outline pairs — same height (32px) across all forms settings pages */
+.ai-settings-shell .primary-btn,
+.ai-settings-shell button.primary-btn,
+.ai-settings-shell a.primary-btn,
+.ai-settings-shell .outline-btn,
+.ai-settings-shell a.outline-btn,
+.ai-settings-shell button.outline-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  min-height: 32px;
+  box-sizing: border-box;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 5px 12px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.ai-settings-shell .outline-btn,
+.ai-settings-shell a.outline-btn,
+.ai-settings-shell button.outline-btn {
+  text-decoration: none;
+  cursor: pointer;
+  background: var(--card-body-color, #fff);
+}
+.ai-settings-shell .forms-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.forms-settings-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+.forms-settings-toolbar .forms-settings-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.forms-settings-toolbar .forms-settings-filters .form-control {
+  width: auto;
+  min-width: 140px;
+  max-width: 100%;
+}
+.ai-settings-shell .forms-reports-filters.pd-0 {
+  margin-bottom: 1.25rem;
+}
+.ai-settings-shell .forms-reports-filters-wrap .filters-row.pd-0 {
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: visible;
+}
+.ai-settings-shell .forms-reports-filters-wrap .task-reports-filters-form {
+  overflow: visible;
+}
+.ai-settings-shell .forms-submissions-ai-actions,
+.ai-settings-shell .forms-mappings-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+}
+.ai-settings-shell .forms-submissions-ai-actions .ai-prefill-buttons {
+  margin: 0 !important;
+}
+.forms-settings-toolbar .ai-prefill-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin: 0 !important;
+  flex: 0 0 auto;
+}
+
+/* List tables — ecommerce settings stores pattern (no vh-100 — avoids empty gap) */
+.ai-settings-shell .ts-forms-settings-table {
+  min-height: 0;
+  height: auto;
+}
+.ai-settings-shell .ts-forms-settings-table .table-responsive {
+  min-height: 0;
+  height: auto;
+}
+.ai-settings-shell .ts-forms-settings-table .table.table-new.projectspage {
+  margin-bottom: 0;
+}
+
+.forms-settings-card {
+  background: var(--grey-bg, #f5f6f8);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--border-color, #e5e7eb);
+}
+.forms-mappings-toolbar {
+  margin-bottom: 1.25rem;
+}
+.forms-mappings-toolbar .forms-settings-filters {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.forms-mappings-toolbar .primary-btn.forms-mapping-add-toggle {
+  flex: 0 0 auto;
+}
+.forms-mappings-step-table {
+  width: 100%;
+}
+.forms-mapping-add-collapse:not(.show) {
+  display: none;
+}
+.forms-mapping-form .ai-settings-block-head {
+  margin-top: 0;
+}
+.forms-mapping-form .form-group.field-label {
+  margin-bottom: 1rem;
+}
+.forms-mapping-form .forms-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.forms-mapping-form .forms-form-actions.justify-content-md-end {
+  justify-content: flex-end;
+}
+.forms-mapping-form-fields .row:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 767px) {
+  .forms-mappings-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .forms-mappings-toolbar .primary-btn.forms-mapping-add-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.ai-settings-shell .primary-btn .ts-icon,
+.ai-settings-shell .outline-btn .ts-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.ai-prefill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+.ai-prefill-btn .ts-icon {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 767px) {
+  .forms-settings-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .forms-settings-toolbar .forms-settings-filters {
+    width: 100%;
+  }
+  .forms-settings-toolbar .forms-settings-filters .form-control {
+    width: 100%;
+    min-width: 0;
+  }
+}

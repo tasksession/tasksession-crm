@@ -1,0 +1,65 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1240 294"
+  width="1240"
+  height="294"
+  role="img"
+  aria-label="Upload files illustration"
+  style="
+    --accent:#ff4d22;
+    --accent-soft:#fff0eb;
+    --secondary:#8fb0ff;
+    --cloud:#e9eaee;
+    --icon:#ffffff;
+  "
+>
+  <rect width="1240" height="294" fill="#ffffff"/>
+
+  <!-- left cloud -->
+  <path
+    d="M109 162h82c14 0 25-10 25-23 0-12-9-22-21-23-3-20-19-34-39-34-19 0-35 13-39 31-4-2-9-3-14-3-15 0-27 12-27 27 0 14 12 25 27 25h6z"
+    fill="none"
+    stroke="var(--cloud)"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- right cloud -->
+  <path
+    d="M1090 160h52c10 0 18-7 18-17 0-9-7-16-15-17-2-14-14-24-28-24-14 0-25 9-28 22-3-1-6-2-10-2-11 0-20 9-20 20 0 10 9 18 20 18h11z"
+    fill="none"
+    stroke="var(--cloud)"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- decorative dots -->
+  <circle cx="421" cy="91" r="5" fill="var(--accent)" opacity=".85"/>
+  <circle cx="316" cy="181" r="5" fill="var(--accent)" opacity=".85"/>
+  <circle cx="361" cy="153" r="8" fill="none" stroke="var(--secondary)" stroke-width="4"/>
+  <circle cx="830" cy="105" r="8" fill="var(--accent-soft)"/>
+  <circle cx="983" cy="91" r="5" fill="var(--secondary)" opacity=".85"/>
+  <circle cx="997" cy="236" r="5" fill="var(--secondary)" opacity=".85"/>
+  <circle cx="895" cy="190" r="8" fill="none" stroke="var(--accent)" stroke-width="4"/>
+
+  <!-- soft halo -->
+  <circle cx="642" cy="147" r="121" fill="var(--accent-soft)"/>
+
+  <!-- main accent circle -->
+  <circle cx="642" cy="147" r="81" fill="var(--accent)"/>
+
+  <!-- upload icon -->
+  <g
+    fill="none"
+    stroke="var(--icon)"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M642 176V105"/>
+    <path d="M620 127l22-22 22 22"/>
+    <path d="M607 173v11c0 12 8 19 20 19h30c12 0 20-7 20-19v-11"/>
+  </g>
+</svg>

@@ -1,0 +1,270 @@
+/* Wide date-range boards: flex ancestors must shrink (style.min .page-content overflow-x:hidden + min-width:auto) */
+.page-container .page-content .row.bg-grey {
+    min-width: 0;
+}
+
+.page-container .page-content .calendar-project-tabs {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.page-container .page-content .calendar-project-tabs > .row {
+    min-width: 0;
+}
+
+.page-container .page-content:has(.calendar-project-tabs) {
+    min-width: 0;
+}
+
+.calendar-board-shell.no-waiting-list {
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+.calendar-project-tabs .project-tabs-header {
+    width: 100%;
+}
+
+.calendar-project-tabs .icon-container {
+    align-items: center;
+}
+
+.calendar-project-tabs .search-form {
+    min-width: 260px;
+}
+
+
+/* Override global hidden animation for date-range card on calendar. */
+.calendar-project-tabs #project-menu-calendar .date-range.card {
+    opacity: 1 !important;
+	transform: translateX(0);
+}
+
+.calendar-board-wrap {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.calendar-board-wrap.drag-scroll-lock {
+    overflow-x: hidden !important;
+}
+
+.calendar-board-wrap.drag-scroll-persist {
+    overflow-x: hidden !important;
+    overscroll-behavior-x: contain;
+}
+
+.calendar-days-board.drag-scroll-persist {
+    pointer-events: auto;
+}
+
+/* Fixed column width — % flex with many columns explodes total width across browsers */
+.calendar-days-board .calendar-day-column {
+    flex: 0 0 290px;
+    min-width: 290px;
+    max-width: 290px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.calendar-days-board {
+    flex-wrap: nowrap;
+    width: max-content;
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.calendar-day-column.selected-day {
+    position: relative;
+    box-shadow: inset 1px 0 0 var(--primary-btn-color), inset -1px 0 0 var(--primary-btn-color), inset 0 1px 0 var(--primary-btn-color), inset 0 -1px 0 var(--primary-btn-color);
+}
+
+.calendar-day-column.selected-day h2 {
+    background: var(--primary-button-color) !important;
+    color: var(--primary-button-font-color) !important;
+}
+.calendar-day-column h2 {
+    margin: 0;
+}
+.calendar-day-column > h2.kanban-col-header-is-fixed {
+    z-index: 10;
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    box-sizing: border-box;
+    overflow: visible;
+}
+.calendar-day-column.selected-day > h2.kanban-col-header-is-fixed {
+    background: var(--primary-button-color) !important;
+    color: var(--primary-button-font-color) !important;
+}
+.calendar-day-column.selected-day > h2.kanban-col-header-is-fixed .column-title,
+.calendar-day-column.selected-day > h2.kanban-col-header-is-fixed .badge {
+    color: var(--primary-button-font-color) !important;
+}
+#event-sidebar {
+    max-width: 500px;
+    width: 100%;
+    height: initial;
+    overflow: clip;
+}
+.calendar-day-column.selected-day .column-title,
+.calendar-day-column.selected-day .badge {
+    color: var(--primary-button-font-color) !important;
+}
+
+.calendar-day-column.selected-day .badge {
+    background: var(--primary-button-color) !important;
+    border: 1px solid var(--primary-button-font-color) !important;
+}
+
+.calendar-month-label {
+    font-weight: 600;
+    min-width: 130px;
+    text-align: center;
+}
+
+.calendar-filter-form .form-control {
+    min-width: 130px;
+}
+
+.calendar-waiting-list {
+    width: 300px;
+    flex: 0 0 300px;
+    background: var(--card-body-color);
+    border: 1px solid var(--table-border-color);
+    border-radius: 12px;
+    padding: 14px;
+    position: sticky;
+    top: 85px;
+    max-height: calc(100vh - 120px);
+    overflow: auto;
+}
+
+.calendar-dropzone {
+    min-height: 120px;
+    flex: 1 1 auto;
+    height: 100%;
+}
+
+.calendar-day-column.dropping-over {
+    background-color: rgba(0, 123, 255, 0.06);
+    box-shadow: none;
+}
+
+.calendar-drop-slot {
+    box-sizing: border-box;
+    margin: 10px 12px;
+    border: 2px dashed rgba(0, 123, 255, 0.35);
+    border-radius: 6px;
+    background: rgba(0, 123, 255, 0.08);
+    pointer-events: none;
+    flex-shrink: 0;
+    transition: height 0.15s ease, min-height 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-drop-slot-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(0, 123, 255, 0.9);
+    pointer-events: none;
+    user-select: none;
+}
+
+.calendar-item-card {
+    cursor: move;
+    transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.calendar-item-card.dragging {
+    opacity: 0.55;
+    transform: scale(0.98);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.calendar-drag-preview {
+    transform: rotate(3.93deg) scale(1.045);
+    transition: transform 220ms cubic-bezier(0.33, 1, 0.68, 1);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+    opacity: 1 !important;
+    background: #ffffff !important;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 9999;
+    -webkit-font-smoothing: antialiased;
+    backface-visibility: hidden;
+}
+
+body.calendar-drag-active {
+    user-select: none;
+}
+
+body.calendar-board-frozen {
+    overflow-x: hidden !important;
+}
+
+.calendar-item-card.event-item-card {
+    border-left: 3px solid #37a2ff;
+}
+
+.calendar-new-dropdown .dropdown-menu {
+    min-width: 160px;
+}
+
+.calendar-project-tabs .calendar-add-new-collapse .action-toggle {
+    flex-shrink: 0;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    background: var(--primary-button-color) !important;
+    color: var(--primary-button-font-color) !important;
+}
+
+.calendar-project-tabs .calendar-add-new-collapse .action-toggle .action-text {
+    white-space: nowrap;
+}
+
+.calendar-project-tabs .calendar-add-new-collapse .action-toggle > svg {
+    flex-shrink: 0;
+}
+
+.calendar-project-tabs .calendar-add-new-collapse .action-toggle:hover {
+    filter: brightness(0.94);
+}
+
+@media (max-width: 1199px) {
+    .calendar-days-board .calendar-day-column {
+        flex: 0 0 290px;
+        min-width: 280px;
+        max-width: 290px;
+    }
+
+    .calendar-board-shell {
+        flex-direction: column;
+    }
+
+    .calendar-waiting-list {
+        width: 100%;
+        position: static;
+        max-height: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .calendar-days-board .calendar-day-column {
+        flex: 0 0 min(100vw, 300px);
+        min-width: min(100vw, 280px);
+        max-width: min(100vw, 320px);
+    }
+}

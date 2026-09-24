@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+Options -MultiViews
+
+# Canonical: GET/HEAD index.php → folder root
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s?]*?/migration)/index\.php[\s?]
+RewriteRule ^index\.php$ %1/ [R=302,L,QSA]
+
+# Canonical: GET/HEAD import.php → import/
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s?]*?/migration)/import\.php[\s?]
+RewriteRule ^import\.php$ %1/import/ [R=302,L,QSA]
+
+# Canonical: GET/HEAD export.php → export/
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s?]*?/migration)/export\.php[\s?]
+RewriteRule ^export\.php$ %1/export/ [R=302,L,QSA]
+
+# Canonical: GET/HEAD module-placeholder.php → module-placeholder
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s?]*?/migration)/module-placeholder\.php[\s?]
+RewriteRule ^module-placeholder\.php$ %1/module-placeholder [R=302,L,QSA]
+
+# Extensionless module-placeholder → .php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^module-placeholder/?$ module-placeholder.php [L,QSA]
+</IfModule>

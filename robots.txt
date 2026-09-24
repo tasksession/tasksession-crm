@@ -1,0 +1,48 @@
+User-agent: *
+Disallow: /uploads/
+Disallow: /user-uploads/
+Disallow: /uploads/cache/
+Disallow: /includes/
+Disallow: /admin/
+Disallow: /ajax/
+Disallow: /logs/
+Disallow: /cache/
+Disallow: /install/
+Disallow: /payment-api/
+Disallow: /assets/js/
+Disallow: /assets/css/
+Disallow: /templates/
+Disallow: /staff/
+Disallow: /client/
+
+# Block specific file types
+Disallow: /*.php$
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.bak$
+Disallow: /*.backup$
+Disallow: /*.tmp$
+Disallow: /*.temp$
+
+# Block access to configuration and sensitive files
+Disallow: /config.php
+Disallow: /.htaccess
+Disallow: /.htpasswd
+Disallow: /composer.json
+Disallow: /composer.lock
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# Allow access to main pages only
+Allow: /index.php
+Allow: /login.php
+Allow: /register.php
+Allow: /assets/images/favicon.png
+Allow: /assets/images/logo.png
+Allow: /assets/images/dark-logo.png
+
+# Crawl delay to reduce server load
+Crawl-delay: 10
+
+# Sitemap (if you have one)
+# Sitemap: https://yourdomain.com/sitemap.xml 

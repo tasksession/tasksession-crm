@@ -1,0 +1,2 @@
+# Install wizard — PHP limits are raised in index.php (ini_set / set_time_limit).
+# Intentionally no php_value here: PHP-FPM hosts return HTTP 500 when php_value is set in .htaccess.

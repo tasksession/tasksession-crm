@@ -1,0 +1,592 @@
+.rich-editor-container {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-body-color) !important;
+}
+
+.rich-editor-toolbar {
+    padding: 5px 12px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--card-body-color) !important;
+    align-items: center;
+    gap: 8px;
+    min-height: 45px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rich-editor-separator {
+    width: 1px;
+    height: 20px;
+    background: var(--border-color);
+    margin: 0 4px;
+}
+
+.rich-editor-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    color: var(--body-font-color) !important;
+    padding: 0;
+}
+
+.rich-editor-btn:hover {
+    background: var(--body-bg-color);
+    border-color: var(--border-color);
+}
+
+.rich-editor-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.rich-editor-btn.rich-editor-dropdown-btn {
+    width: auto;
+    border: 1px solid var(--border-color);
+    background: var(--card-body-color) !important;
+    justify-content: space-between;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 8px;
+}
+
+.rich-editor-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    background: var(--card-body-color) !important;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    z-index: 1000;
+    display: none;
+    min-width: 250px;
+    margin-top: 4px;
+}
+
+/* Paragraph / headings dropdown only (not "More" menu) */
+.rich-editor-dropdown.rich-editor-dropdown-paragraph {
+    left: 0;
+    right: auto;
+}
+
+.rich-editor-dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 13px;
+    color: var(--body-font-color);
+    transition: background-color 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rich-editor-dropdown-item:hover {
+    background: var(--body-bg-color);
+}
+
+.rich-editor-dropdown-arrow {
+    width: 12px;
+    height: 12px;
+    color: color-mix(in srgb, var(--title-color) 50%, transparent);
+}
+
+.rich-editor-dropdown-icon {
+    width: 14px;
+    height: 14px;
+    color: color-mix(in srgb, var(--title-color) 50%, transparent);
+    margin-left: 8px;
+}
+.rich-editor-content p {
+    color: var(--body-font-color) !important;
+}
+.rich-editor-content ::marker {
+    color: var(--body-font-color) !important;
+}
+.rich-editor-content {
+    padding: 12px 25px;
+    outline: none;
+    font-size: 14px;
+    line-height: 2;
+    color: var(--body-font-color) !important;
+    background: var(--card-body-color) !important;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    border: none;
+    resize: none;
+    overflow: auto;
+    position: relative;
+}
+
+.rich-editor-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.rich-editor-content br {
+    display: block;
+    content: "";
+    margin: 0;
+    padding: 0;
+}
+
+.rich-editor-content img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.rich-editor-content img.rich-editor-img--active {
+    outline: 2px solid var(--primary-button-color, #2563eb);
+    outline-offset: 2px;
+}
+
+.rich-editor-img-toolbar {
+    position: fixed;
+    z-index: 10060;
+    display: none;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    background: var(--card-body-color, #fff);
+    border: 1px solid color-mix(in srgb, var(--title-color) 18%, transparent);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.rich-editor-img-toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.rich-editor-img-toolbar-group + .rich-editor-img-toolbar-group {
+    border-left: 1px solid color-mix(in srgb, var(--title-color) 15%, transparent);
+    padding-left: 8px;
+    margin-left: 2px;
+}
+
+.rich-editor-img-toolbar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 4px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--title-color);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.rich-editor-img-toolbar-btn:hover {
+    background: color-mix(in srgb, var(--primary-button-color) 12%, transparent);
+}
+
+.rich-editor-img-toolbar-btn.rich-editor-img-toolbar-btn--active {
+    background: color-mix(in srgb, var(--primary-button-color) 22%, transparent);
+    color: var(--primary-button-color);
+}
+
+.rich-editor-img-toolbar-btn.rich-editor-img-toolbar-btn--danger:hover {
+    background: color-mix(in srgb, #dc2626 14%, transparent);
+    color: #b91c1c;
+}
+
+.rich-editor-img-toolbar-btn svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.rich-editor-img-toolbar-label {
+    min-width: 2.5rem;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--body-font-color);
+    user-select: none;
+}
+
+.rich-editor-img-toolbar-txt {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.rich-editor-img-toolbar-pct .rich-editor-img-toolbar-btn {
+    min-width: 36px;
+    padding: 4px 6px;
+}
+
+.rich-editor-content[data-placeholder]:empty:before {
+    content: attr(data-placeholder);
+    color: color-mix(in srgb, var(--title-color) 55%, transparent);
+    pointer-events: none;
+    position: absolute;
+    top: 12px;
+    left: 25px;
+    font-style: italic;
+    z-index: 1;
+}
+
+.rich-editor-content[data-placeholder]:focus:empty:before {
+    display: none;
+}
+
+.rich-editor-preview-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    padding: 6px 12px;
+    background: var(--primary-button-color);
+    color: var(--primary-button-font-color);
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+    transition: opacity 0.15s ease;
+}
+
+.rich-editor-preview-btn:hover {
+    opacity: 0.9;
+}
+
+.rich-editor-paragraph-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.rich-editor-paragraph-label {
+    font-size: 13px;
+}
+
+.rich-editor-format-icon {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.rich-editor-format-italic {
+    font-style: italic;
+}
+
+.rich-editor-format-underline {
+    text-decoration: underline;
+}
+
+.rich-editor-format-strikethrough {
+    text-decoration: line-through;
+}
+
+.rich-editor-dropdown-color-preview {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+.rich-editor-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.rich-editor-modal-content {
+    background: var(--card-body-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.rich-editor-modal-content-source {
+    width: 90%;
+    max-width: 800px;
+    height: 80%;
+    max-height: 600px;
+}
+
+.rich-editor-modal-content-preview {
+    max-width: 90%;
+    max-height: 90%;
+    width: 800px;
+    height: 600px;
+}
+
+.rich-editor-modal-header {
+    padding: 25px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--body-bg-color);
+}
+
+.rich-editor-modal-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--title-color);
+}
+
+.rich-editor-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: color-mix(in srgb, var(--title-color) 50%, transparent);
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.rich-editor-modal-close:hover {
+    background: var(--body-bg-color);
+}
+
+.rich-editor-modal-body {
+    flex: 1;
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.rich-editor-modal-body-preview {
+    overflow-y: auto;
+}
+
+.rich-editor-source-textarea {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 12px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 2;
+    color: var(--body-font-color);
+    background: var(--body-bg-color);
+    resize: none;
+    outline: none;
+}
+
+.rich-editor-modal-footer {
+    padding: 25px 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    background: var(--body-bg-color);
+}
+
+.rich-editor-modal-btn {
+    padding: 8px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.rich-editor-modal-btn-cancel {
+    border: 1px solid var(--border-color);
+    background: var(--card-body-color);
+    color: var(--title-color);
+}
+
+.rich-editor-modal-btn-cancel:hover {
+    background: var(--body-bg-color);
+}
+
+.rich-editor-modal-btn-save {
+    border: none;
+    background: var(--primary-button-color);
+    color: var(--primary-button-font-color);
+}
+
+.rich-editor-modal-btn-save:hover {
+    opacity: 0.9;
+}
+
+.rich-editor-preview-frame {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--card-body-color);
+}
+
+.rich-editor-preview-body {
+    line-height: 2;
+    color: var(--body-font-color);
+    margin: 0;
+    padding: 20px;
+    background: var(--card-body-color);
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.rich-editor-preview-body p {
+    margin: 0 0 8px 0;
+}
+
+.rich-editor-preview-body h1,
+.rich-editor-preview-body h2,
+.rich-editor-preview-body h3,
+.rich-editor-preview-body h4,
+.rich-editor-preview-body h5,
+.rich-editor-preview-body h6 {
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+}
+
+.rich-editor-preview-body table {
+    border-collapse: collapse;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.rich-editor-preview-body td,
+.rich-editor-preview-body th {
+    padding: 4px 8px;
+    border: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+@media (max-width: 1280px) {
+    .rich-editor-toolbar {
+        gap: 6px;
+        padding: 4px 8px;
+        min-height: 36px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin;
+    }
+}
+@media (max-width: 767px) {
+    .rich-editor-toolbar .rich-editor-separator,
+    .rich-editor-toolbar .rich-editor-btn,
+    .rich-editor-toolbar .rich-editor-dropdown-container {
+        flex-shrink: 0;
+    }
+
+    .rich-editor-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .rich-editor-btn.rich-editor-dropdown-btn {
+        font-size: 12px;
+        padding: 0 6px;
+    }
+
+    .rich-editor-paragraph-label {
+        font-size: 12px;
+    }
+
+    .rich-editor-format-icon {
+        font-size: 16px;
+    }
+}
+
+/* Floated menus escape overflow-x on toolbar (set via JS on narrow / overflow layouts) */
+.rich-editor-dropdown.rich-editor-dropdown--floating {
+    position: fixed !important;
+    right: auto !important;
+    margin-top: 4px;
+    max-height: min(70vh, 380px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+    z-index: 10050;
+}
+
+/* —— Profile Notes editor only (scoped under .profile-doc) —— */
+.profile-doc .rich-editor-toolbar {
+    gap: 4px;
+    padding: 4px 8px;
+    min-height: 40px;
+    align-items: center;
+}
+.profile-doc .rich-editor-separator {
+    margin: 0 2px;
+    height: 18px;
+    flex-shrink: 0;
+}
+/* Icon-only buttons; not dropdowns (they need width: auto) */
+.profile-doc .rich-editor-toolbar .rich-editor-btn:not(.rich-editor-dropdown-btn) {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+.profile-doc .rich-editor-toolbar .rich-editor-btn > svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+.profile-doc .rich-editor-format-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+.profile-doc .rich-editor-paragraph-label {
+    font-size: 12px;
+}
+
+@media (max-width: 1280px) {
+    .profile-doc .rich-editor-toolbar {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        overflow-y: visible;
+        row-gap: 4px;
+    }
+}
+@media (max-width: 767px) {
+    .profile-doc .rich-editor-toolbar .rich-editor-btn:not(.rich-editor-dropdown-btn) {
+        width: 26px;
+        height: 26px;
+    }
+    .profile-doc .rich-editor-format-icon {
+        font-size: 14px;
+    }
+    .profile-doc .rich-editor-toolbar .rich-editor-dropdown-container > .rich-editor-btn.rich-editor-dropdown-btn {
+        min-height: 26px;
+    }
+}

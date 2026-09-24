@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+Options -MultiViews
+
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s?]*?/)index\.php[\s?]
+RewriteRule ^index\.php$ %1dashboard [R=302,L,QSA]
+
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s?]*?/)([a-zA-Z0-9_-]+)\.php[\s?]
+RewriteRule ^([a-zA-Z0-9_-]+)\.php$ %1$1 [R=302,L,QSA]
+
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s]*?/staff)/?\s
+RewriteRule ^$ %1/dashboard [R=302,L]
+
+RewriteRule ^dashboard/?$ index.php [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.php [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php !-f
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ ../menu-alias.php?role=staff&slug=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9_-]+)\.php$ ../menu-alias.php?role=staff&slug=$1 [L,QSA]
+</IfModule>

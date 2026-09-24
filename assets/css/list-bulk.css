@@ -1,0 +1,47 @@
+/* Reusable list bulk-select (TsListBulk) — media-vault pattern */
+
+/* Checkboxes always visible (default) */
+.ts-list-bulk-checkbox-col,
+.ts-list-bulk-checkbox-cell {
+  display: table-cell;
+  width: 42px;
+  min-width: 42px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ts-list-bulk-checkbox-cell input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Bulk mode: hide catalog/header tabs + search; expand bulk toolbar full width (file-sharing.css parity) */
+body.ts-list-bulk-mode-active .project-tabs-header {
+  display: none !important;
+}
+
+body.ts-list-bulk-mode-active .project-tabs .search {
+  display: none !important;
+}
+
+body.ts-list-bulk-mode-active .project-tabs .edit-overview-btn.ts-list-bulk-toolbar-wrap {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+body.ts-list-bulk-mode-active .project-tabs .ts-list-bulk-toolbar .icon-container.sep,
+body.ts-list-bulk-mode-active .project-tabs .ts-list-bulk-toolbar.icon-container.sep {
+  width: 100%;
+}
+
+body.ts-list-bulk-mode-active .project-tabs .pm-trash.task-trash {
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+body.ts-list-bulk-mode-active .project-tabs .ts-list-bulk-toolbar .media-view-toggle,
+body.ts-list-bulk-mode-active .project-tabs #projectsViewToggle {
+  display: none !important;
+}

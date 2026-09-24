@@ -1,0 +1,3 @@
+includes/tasksession-secret.local.php
+includes/.tasksession-secret.lock
+includes/.tasksession-secret.*.tmp

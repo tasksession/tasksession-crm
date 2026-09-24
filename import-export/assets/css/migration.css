@@ -1,0 +1,137 @@
+/**
+ * Data migration hub (import-export/migration/)
+ * Theme colors: CSS variables only (no hex fallbacks).
+ */
+.migration-action-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 100%;
+}
+.migration-action-link .settings-card {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.migration-action-link:hover .settings-card {
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 22px color-mix(in srgb, var(--body-font-color) 10%, transparent);
+}
+.migration-action-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    flex: 1 1 auto;
+}
+.migration-action-card-text {
+    flex: 1 1 auto;
+}
+.migration-import-grid .migration-action-card-text {
+    min-height: 1.75rem;
+}
+.center-col .migration-intro {
+    text-align: center;
+}
+.migration-panel-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.migration-panel-hero__img {
+    max-width: min(100%, 190px);
+    height: auto;
+    display: block;
+}
+.migration-intro .migration-panel-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--title-color);
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+}
+.migration-intro .migration-panel-lead {
+    margin-bottom: 40px !important;
+    color: var(--body-font-color);
+}
+.migration-action-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 18px;
+}
+.migration-action-icon--import {
+    color: var(--primary-color);
+    background: color-mix(in srgb, var(--primary-color) 16%, transparent);
+}
+.migration-action-icon--export {
+    color: var(--primary-color);
+    background: color-mix(in srgb, var(--primary-color) 10%, transparent);
+}
+.migration-action-icon--module {
+    color: var(--primary-color);
+    background: color-mix(in srgb, var(--primary-color) 14%, transparent);
+}
+.migration-action-icon--module-muted {
+    color: var(--body-font-color);
+    background: color-mix(in srgb, var(--body-font-color) 14%, transparent);
+}
+.migration-action-brand {
+    width: 56px;
+    height: 56px;
+    margin: 0 0 18px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+}
+.migration-action-brand img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    display: block;
+}
+.migration-action-link .settings-card h3,
+.migration-import-grid .settings-card h3 {
+    margin-bottom: 6px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--title-color);
+}
+.migration-import-grid .migration-action-card--disabled .settings-card {
+    cursor: default;
+}
+.migration-import-grid > .col-12 > .migration-panel-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--title-color);
+    margin: 0 0 1rem;
+    line-height: 1.3;
+}
+.migration-action-link-support {
+    display: block;
+    flex: none;
+    min-height: 0;
+}
+.migration-action-link-support .settings-card {
+    flex: none;
+    display: block;
+    min-height: 0;
+}
+.migration-action-link-support .migration-action-card-body {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

@@ -1,0 +1,41 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+Options -MultiViews
+
+# Canonical: GET/HEAD index.php → dashboard (absolute path from THE_REQUEST)
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s?]*?/)index\.php[\s?]
+RewriteRule ^index\.php$ %1dashboard [R=302,L,QSA]
+
+# Canonical: GET/HEAD page.php → page
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s?]*?/)([a-zA-Z0-9_-]+)\.php[\s?]
+RewriteRule ^([a-zA-Z0-9_-]+)\.php$ %1$1 [R=302,L,QSA]
+
+# Role folder root → dashboard
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s([^\s]*?/admin)/?\s
+RewriteRule ^$ %1/dashboard [R=302,L]
+
+# /dashboard → index.php
+RewriteRule ^dashboard/?$ index.php [L,QSA]
+
+# Extensionless physical page → .php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.php [L,QSA]
+
+# Extensionless virtual menu alias
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php !-f
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ ../menu-alias.php?role=admin&slug=$1 [L,QSA]
+
+# Legacy virtual alias: non-file slug.php → menu-alias
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9_-]+)\.php$ ../menu-alias.php?role=admin&slug=$1 [L,QSA]
+</IfModule>
+
+# PHP limits: hPanel → Advanced → PHP Configuration (not php_value — Hostinger 500).

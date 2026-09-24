@@ -1,0 +1,870 @@
+/* style.min.css sets html/body height:100% which clips tall install forms */
+html,
+body {
+    height: auto !important;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f8fa !important;
+}
+.install-logo {
+    text-align: center;
+    margin: 30px 20px;
+}
+.install-logo img {
+       max-width: 200px;
+}
+.dbinstall h1 {
+    font-size: 28px;
+    margin-top: 35px;
+}
+
+.dbinstall form input[type="text"],
+.dbinstall form input[type="email"],
+.dbinstall form input[type="password"] {
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 10px;
+    line-height: 22px;
+    border-radius: 5px;
+    border: #d3d3d3 1px solid;
+    box-sizing: border-box;
+}
+.admin-role input{
+    margin: 0 !important;
+}
+.dbinstall form input[type="submit"],
+.dbinstall form button,
+.btn-success,
+.btn-login {
+    background: #0094ff;
+    border: none;
+    color: #fff;
+    padding: 10px 30px!important;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 5px !important;
+	cursor: pointer;
+    margin: 0 auto;
+	    max-width: 270px;
+    display: block;
+}
+
+.dbinstall form input[type="submit"]:hover,
+.dbinstall form button:hover,
+.btn-success:hover,
+.btn-login:hover {
+            background-color: #0056b3;
+            color: #fff !important;
+            text-decoration: none;
+        }
+
+.install-submit-btn {
+    position: relative;
+    min-width: 200px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.install-submit-btn.is-loading {
+    pointer-events: none;
+    opacity: 0.88;
+    cursor: wait;
+}
+
+.install-submit-spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: install-spin 0.75s linear infinite;
+    flex-shrink: 0;
+}
+
+.install-submit-btn.is-loading .install-submit-spinner {
+    display: inline-block;
+}
+
+@keyframes install-spin {
+    to { transform: rotate(360deg); }
+}
+.wizard-table {
+    padding: 12px 0px;
+    border-bottom: 1px solid #c0c0c0;
+	    align-items: center;
+}
+.dbinstall {
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.dbinstall h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 24px;
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.requirement-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.requirement-item:last-child {
+    border-bottom: none;
+}
+
+.requirement-name {
+    flex: 1;
+    text-align: left;
+    color: #222d32;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.requirement-status {
+    flex: 0 0 auto;
+    text-align: right;
+    min-width: 120px;
+}
+
+.status-badge {
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.status-badge.success {
+    background: #d4edda;
+    color: #fffff;
+}
+
+.status-badge.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.action-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action-buttons .btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.action-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.error-message {
+    text-align: center;
+    padding: 15px;
+    background: #f8d7da;
+    border-radius: 8px;
+    margin-top: 20px;
+	 position: initial !important;
+}
+
+.error-message p {
+    color: #721c24;
+    margin: 0;
+    font-weight: 500;
+}
+
+.centered {
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* Database form styles */
+.database {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.login-col {
+    padding: 20px;
+}
+
+/* Quick tips section */
+.quick-tips {
+    background: #e7f3ff;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border-left: 4px solid #2196F3;
+}
+
+.quick-tips h5 {
+    margin: 0 0 10px 0;
+    color: #1976D2;
+}
+
+.quick-tips ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #1976D2;
+}
+
+.quick-tips li {
+    margin-bottom: 5px;
+}
+
+/* Error alert styles */
+.alert {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    border: 1px solid #f5c6cb;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #856404;
+}
+
+.alert-warning h5 {
+    margin: 0 0 10px 0;
+    color: #856404;
+}
+
+.alert-warning ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #856404;
+}
+
+/* Form field styles */
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-field input {
+    width: 100%;
+    margin: 0;
+}
+
+.form-field p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+/* Error details section */
+.error-details {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.error-details h5 {
+    margin: 0 0 10px 0;
+}
+
+.error-details ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* Navigation buttons */
+.nav-buttons {
+    margin-top: 20px;
+	text-align: center;
+}
+.btn-secondary {
+    border-radius: 5px !important;
+}
+.nav-buttons .btn {
+    margin-right: 10px;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Admin Setup Page Styles */
+.setup-info {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.setup-info h5 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.setup-info p {
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #fafbfc;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #0094ff;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(0, 148, 255, 0.1);
+}
+
+.form-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0094ff 0%, #0056b3 100%);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 25px auto;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0, 148, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 148, 255, 0.4);
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+}
+
+.setup-tips {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+    border-left: 4px solid #0094ff;
+}
+
+.setup-tips h6 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.setup-tips ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #6c757d;
+}
+
+.setup-tips li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.setup-tips li:last-child {
+    margin-bottom: 0;
+}
+
+/* Enhanced alert styling */
+.alert-danger {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border-left: 4px solid #dc3545;
+    box-shadow: 0 2px 10px rgba(220, 53, 69, 0.1);
+}
+
+/* Database container enhancement */
+.database {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.login-col {
+    padding: 30px;
+}
+
+.login-col h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .database {
+        margin: 20px;
+        border-radius: 10px;
+    }
+    
+    .login-col {
+        padding: 20px;
+    }
+    
+    .setup-info {
+        padding: 15px;
+    }
+    
+    .btn-primary {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
+
+/* Complete Page — Task Session brand colors */
+.install-complete-page {
+    font-family: 'Lexend Deca', system-ui, sans-serif;
+}
+
+.install-complete-wrap {
+    max-width: 520px;
+}
+
+.install-complete-header {
+    text-align: center;
+    margin-bottom: 24px;
+    padding: 28px 24px;
+    background: #0094ff;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.install-complete-header__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.install-complete-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.install-complete-header__lead {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.install-complete-card {
+    padding: 18px 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #e1e5e9;
+    background: #fff;
+}
+
+.install-complete-card--info {
+    border-left: 4px solid #0094ff;
+    background: #f0f8ff;
+}
+
+.install-complete-card--warning {
+    border-left: 4px solid #ffc107;
+    background: #fffbf0;
+}
+
+.install-complete-card--steps {
+    border-left: 4px solid #6c757d;
+    background: #f8f9fa;
+}
+
+.install-complete-card__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #222d32;
+}
+
+.install-complete-card__icon {
+    display: inline-flex;
+    color: #0094ff;
+    flex-shrink: 0;
+}
+
+.install-complete-card--warning .install-complete-card__icon {
+    color: #b8860b;
+}
+
+.install-complete-card--steps .install-complete-card__icon {
+    color: #495057;
+}
+
+.install-complete-card p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #495057;
+}
+
+.install-complete-card ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #495057;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.install-complete-card li {
+    margin-bottom: 6px;
+}
+
+.install-complete-card li:last-child {
+    margin-bottom: 0;
+}
+
+.install-complete-card code {
+    font-size: 13px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.install-complete-btn {
+    width: 100%;
+    max-width: 100%;
+    margin: 8px 0 0;
+    padding: 12px 20px !important;
+    justify-content: center;
+    text-transform: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 5px !important;
+    background: var(--primary-button-color, #0094ff) !important;
+    color: var(--primary-button-font-color, #fff) !important;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.install-complete-btn:hover {
+    filter: brightness(0.92);
+    color: #fff !important;
+    text-decoration: none;
+}
+
+/* Admin setup (step 2) — matches complete page */
+.install-admin-setup {
+    padding: 0;
+}
+
+.install-admin-form {
+    margin-bottom: 16px;
+}
+
+.install-admin-field {
+    margin-bottom: 10px;
+}
+
+.install-admin-field label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #222d32;
+}
+
+.install-admin-form input[type="text"],
+.install-admin-form input[type="email"],
+.install-admin-form input[type="password"] {
+    margin-bottom: 0 !important;
+}
+
+.install-admin-field input {
+    width: 100%;
+    margin: 0;
+    padding: 11px 14px;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.install-admin-field input:focus {
+    outline: none;
+    border-color: #0094ff;
+    box-shadow: 0 0 0 3px rgba(0, 148, 255, 0.12);
+}
+
+.install-admin-hint {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #6c757d;
+    font-style: normal;
+}
+
+.install-complete-card--error {
+    border-left: 4px solid #dc3545;
+    background: #fff5f5;
+}
+
+.install-complete-card--error .install-complete-card__icon {
+    color: #dc3545;
+}
+
+.install-admin-details {
+    margin-top: 10px;
+}
+
+.install-admin-details summary {
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: #0094ff;
+}
+
+.install-admin-details pre {
+    margin: 10px 0 0;
+    padding: 10px;
+    font-size: 11px;
+    max-height: 160px;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.install-admin-form .install-complete-btn {
+    margin-top: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Legacy complete styles (kept for backwards compatibility) */
+.success-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.success-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.success-header h1 {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+}
+
+.success-message {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.success-info {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #2196F3;
+}
+
+.success-info h5 {
+    margin: 0 0 10px 0;
+    color: #1976D2;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.success-info p {
+    margin: 0;
+    color: #1976D2;
+    line-height: 1.5;
+}
+
+.security-warning {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #ffc107;
+}
+
+.security-warning h6 {
+    margin: 0 0 10px 0;
+    color: #856404;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.security-warning p {
+    margin: 0;
+    color: #856404;
+    line-height: 1.5;
+}
+
+.next-steps {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border-left: 4px solid #6c757d;
+}
+
+.next-steps h6 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.next-steps ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #6c757d;
+}
+
+.next-steps li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.next-steps li:last-child {
+    margin-bottom: 0;
+}
+
+/* Enhanced button for complete page */
+.btn-primary {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 25px auto;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+    color: white;
+    text-decoration: none;
+}
+        

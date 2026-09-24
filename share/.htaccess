@@ -1,0 +1,6 @@
+# Public share routes: parent page embeds preview in an iframe (same origin).
+# Root .htaccess sets X-Frame-Options DENY which blocks that; allow framing from this site only.
+<IfModule mod_headers.c>
+    Header always unset X-Frame-Options
+    Header always set X-Frame-Options SAMEORIGIN
+</IfModule>

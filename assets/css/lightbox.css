@@ -1,0 +1,379 @@
+/* Preload images */
+body:after {
+  content: url(../images/files/close.png) url(../images/files/prev.png) url(../images/files/next.png);
+  display: none;
+}
+
+.lightboxOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: black;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  display: none;
+}
+
+.lightbox {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  text-align: center;
+  line-height: 0;
+  font-weight: normal;
+}
+
+/* Chat / Lightbox2 only — media preview uses #lightbox .gdrive-outer (file-sharing.css) */
+.lightbox:not(#lightbox) .lb-image,
+.chat-shared-lightbox .lb-image {
+  display: block;
+  height: auto;
+  max-width: min(960px, 92vw);
+  max-height: 85vh;
+  width: auto;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.lightbox a img {
+  border: none;
+}
+
+/*
+ * Media vault (#lightbox .gdrive-outer) centers with absolute + translate.
+ * Do not force block/relative sizing here or the image sits in a wide empty card.
+ */
+.lb-outerContainer:not(.gdrive-outer) {
+  position: relative;
+  margin: 0 auto;
+  max-width: min(960px, 92vw);
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+}
+.lb-outerContainer:not(.gdrive-outer) .lb-container {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/*
+ * Loading state: fixed skeleton card (no full-width flash).
+ * Lightbox adds .animating while the image is fetched/measured.
+ */
+.lb-outerContainer.animating {
+  width: min(760px, 94vw) !important;
+  height: min(520px, 72vh) !important;
+  max-width: min(760px, 94vw) !important;
+  overflow: hidden;
+  border: none !important;
+  outline: none !important;
+  padding: 0 !important;
+  /* Kill default white card bg that shows as a top strip */
+  background-color: #2a2e35 !important;
+  background-image: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.14) 40%,
+    rgba(255, 255, 255, 0.04) 80%
+  ) !important;
+  background-size: 200% 100% !important;
+  background-repeat: no-repeat !important;
+  animation: lb-skeleton-shimmer 1.15s ease-in-out infinite;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.lb-outerContainer.animating .lb-container {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  height: 100%;
+}
+
+.lb-outerContainer.animating .lb-image,
+.lb-outerContainer.animating .lb-nav {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.lb-outerContainer.animating .lb-loader {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background: transparent !important;
+}
+
+@keyframes lb-skeleton-shimmer {
+  0% { background-position: 100% 0, 0 0; }
+  100% { background-position: -100% 0, 0 0; }
+}
+
+.lb-outerContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lb-container {
+  padding: 0;
+  background: transparent;
+}
+
+.lb-loader {
+  position: absolute;
+  top: 43%;
+  left: 0;
+  height: 25%;
+  width: 100%;
+  text-align: center;
+  line-height: 0;
+  z-index: 2;
+}
+
+.lb-cancel {
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  border-top-color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  animation: lb-spinner 0.75s linear infinite;
+  box-sizing: border-box;
+}
+
+@keyframes lb-spinner {
+  to { transform: rotate(360deg); }
+}
+
+.lb-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+.lb-container > .nav {
+  left: 0;
+}
+
+.lb-nav a {
+  outline: none;
+  background-image: none;
+}
+
+.lb-prev, .lb-next {
+  height: auto;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vault-style always-visible circular arrows */
+.lb-nav a.lb-prev,
+.lb-nav a.lb-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  float: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--secondary-button-color, #6c757d) !important;
+  background-image: none !important;
+  color: var(--secondary-button-font-color, #fff);
+  opacity: 1 !important;
+  filter: none !important;
+  z-index: 10002;
+  transition: all 0.2s ease;
+  text-indent: 0;
+  font-size: 0;
+  line-height: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.lb-nav a.lb-prev {
+  left: 20px;
+}
+.lb-nav a.lb-next {
+  right: 20px;
+  width: 34px;
+}
+.lb-nav a.lb-prev::before,
+.lb-nav a.lb-next::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-top: 2.5px solid var(--secondary-button-font-color, #fff);
+  border-right: 2.5px solid var(--secondary-button-font-color, #fff);
+}
+.lb-nav a.lb-prev::before {
+  transform: rotate(-135deg);
+  margin-left: 4px;
+}
+.lb-nav a.lb-next::before {
+  transform: rotate(45deg);
+  margin-right: 4px;
+}
+.lb-nav a.lb-prev:hover,
+.lb-nav a.lb-next:hover {
+  background: color-mix(in srgb, var(--secondary-button-color, #6c757d) 72%, #000 28%) !important;
+  opacity: 1 !important;
+  transform: translateY(-50%) scale(1.08);
+}
+.lb-nav a[style*="display: none"],
+.lb-nav a.lb-prev[style*="display: none"],
+.lb-nav a.lb-next[style*="display: none"] {
+  display: none !important;
+}
+
+/* Shared chat custom lightbox arrows (task / discussion) */
+.chat-lb-nav-arrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 10001;
+  pointer-events: none;
+}
+.chat-lb-nav-prev,
+.chat-lb-nav-next {
+  background: var(--secondary-button-color, #6c757d);
+  color: var(--secondary-button-font-color, #fff);
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 3px;
+}
+.chat-lb-nav-prev:hover,
+.chat-lb-nav-next:hover {
+  background: color-mix(in srgb, var(--secondary-button-color, #6c757d) 72%, #000 28%);
+  color: var(--secondary-button-font-color, #fff);
+  transform: scale(1.08);
+}
+.lb-dataContainer {
+  display: none !important;
+}
+/* .lb-dataContainer visibility is toggled by Lightbox2 JS; do not force display:none !important
+   (that blocks captions and can confuse layout/stacking on some pages). */
+
+.lb-top-actions {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lb-dataContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lb-data {
+  padding: 0 4px;
+  color: var(--body-font-color, #ccc);
+}
+
+.lb-data .lb-details {
+  width: 85%;
+  float: left;
+  text-align: left;
+  line-height: 1.1em;
+}
+
+.lb-data .lb-caption {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1em;
+}
+
+.lb-data .lb-number {
+  display: block;
+  clear: left;
+  padding-bottom: 1em;
+  font-size: 12px;
+  color: var(--body-font-color, #999);
+  opacity: 0.85;
+}
+
+.lb-top-actions .lb-download,
+.lb-top-actions .lb-close {
+  display: flex;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  text-align: center;
+  outline: none;
+  opacity: 1;
+  transition: all 0.2s ease;
+  color: var(--secondary-button-font-color, #fff);
+  text-decoration: none;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-button-color, #6c757d);
+  padding: 0;
+}
+.lb-top-actions .lb-download svg,
+.lb-top-actions .lb-close svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  color: var(--secondary-button-font-color, #fff);
+}
+.lb-top-actions .lb-download:hover,
+.lb-top-actions .lb-close:hover {
+  cursor: pointer;
+  opacity: 1;
+  text-decoration: none;
+  background: color-mix(in srgb, var(--secondary-button-color, #6c757d) 72%, #000 28%);
+  color: var(--secondary-button-font-color, #fff);
+  transform: scale(1.08);
+}
+
+

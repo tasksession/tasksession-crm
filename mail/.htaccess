@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^inbox/?$ inbox.php [L,QSA]
+RewriteRule ^new/?$ new.php [L,QSA]
+RewriteRule ^inbox-health/?$ inbox-health.php [L,QSA]

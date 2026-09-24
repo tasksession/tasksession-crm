@@ -1,0 +1,100 @@
+# SECURITY: Block ALL direct access to uploads folder
+# This prevents unauthorized access to private user images
+
+# Block all direct access by default, allow only specific image paths
+<IfModule mod_authz_core.c>
+    <RequireAny>
+        Require expr "%{REQUEST_URI} =~ m#^/(?:.+/)?uploads/file-sharing/thumbnails/.*\.(?:jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$#i"
+        Require expr "%{REQUEST_URI} =~ m#^/(?:.+/)?uploads/private-notes/[0-9]+/thumbs/.*\.(?:jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$#i"
+        Require expr "%{REQUEST_URI} =~ m#^/(?:.+/)?uploads/system-uploads/.*\.(?:jpg|jpeg|png|gif|webp|bmp|svg|ico)$#i"
+        Require expr "%{REQUEST_URI} =~ m#^/(?:.+/)?uploads/system-uploads/(?:fav_|.*_fav_).*\.(?:ico|png|gif|svg)$#i"
+        Require expr "%{REQUEST_URI} =~ m#^/(?:.+/)?uploads/client-companies/.*\.(?:jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$#i"
+        Require expr "%{REQUEST_URI} =~ m#^/(?:.+/)?uploads/ecommerce-woo/.*\.(?:jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$#i"
+        Require expr "%{REQUEST_URI} =~ m#^/(?:.+/)?uploads/marketing/templates/(?:[0-9]+|temp/[a-f0-9]{32})/.*\.(?:jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico|css|woff|woff2|ttf|eot|otf)$#i"
+        Require expr "%{REQUEST_URI} =~ m#^/(?:.+/)?uploads/marketing/content/.*\.(?:jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$#i"
+        Require all denied
+    </RequireAny>
+</IfModule>
+
+# Apache 2.2 fallback for the same allowlist
+<IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/file-sharing/thumbnails/.*\.(jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/private-notes/[0-9]+/thumbs/.*\.(jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/system-uploads/.*\.(jpg|jpeg|png|gif|webp|bmp|svg|ico)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/system-uploads/(fav_|.*_fav_).*\.(ico|png|gif|svg)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/client-companies/.*\.(jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/file-sharing/thumbnails/.*\.(jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/private-notes/[0-9]+/thumbs/.*\.(jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/system-uploads/.*\.(jpg|jpeg|png|gif|webp|bmp|svg|ico)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/system-uploads/(fav_|.*_fav_).*\.(ico|png|gif|svg)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/client-companies/.*\.(jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/ecommerce-woo/.*\.(jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/marketing/templates/([0-9]+|temp/[a-f0-9]{32})/.*\.(jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico|css|woff|woff2|ttf|eot|otf)$" allow_uploads_image=1
+    SetEnvIfNoCase Request_URI "^/(.+/)?uploads/marketing/content/.*\.(jpg|jpeg|png|gif|webp|bmp|tiff|svg|ico)$" allow_uploads_image=1
+    Allow from env=allow_uploads_image
+</IfModule>
+
+# Prevent directory listing and browsing
+Options -Indexes -MultiViews
+
+# Block access to sensitive file types specifically
+<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|jsp|asp|sh|cgi|htaccess|htpasswd|ini|log|sql|bak|backup|tmp|temp)$">
+    Require all denied
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Image allowlist is handled in the top directory-level auth rules.
+
+# Block access to all document types
+<FilesMatch "\.(pdf|doc|docx|xls|xlsx|ppt|pptx|txt|rtf|odt|ods|odp)$">
+    Require all denied
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Block access to all archive types
+<FilesMatch "\.(zip|rar|7z|tar|gz|bz2)$">
+    Require all denied
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Block access to all media types
+<FilesMatch "\.(mp3|mp4|avi|mov|wmv|flv|wav|ogg|webm)$">
+    Require all denied
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Prevent search engine indexing
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "no-referrer"
+</IfModule>
+
+# Block robots.txt access to this directory
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^robots\.txt$ - [F,L]
+</IfModule>
+
+# Block common bot user agents
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_USER_AGENT} (bot|crawler|spider|scraper|indexer) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Block access from external referrers (optional - uncomment if needed)
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTP_REFERER} !^$
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?yourdomain\.com [NC]
+#     RewriteRule .* - [F,L]
+# </IfModule> 

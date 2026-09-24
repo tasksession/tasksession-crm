@@ -1,0 +1,19 @@
+# Company logos — public read (same pattern as uploads/system-uploads/)
+<IfModule mod_authz_core.c>
+    <FilesMatch "\.(?i:jpe?g|png|gif|webp|ico)$">
+        Require all granted
+    </FilesMatch>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    <FilesMatch "\.(?i:jpe?g|png|gif|webp|ico)$">
+        Order allow,deny
+        Allow from all
+    </FilesMatch>
+    Order deny,allow
+    Deny from all
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=604800"
+</IfModule>

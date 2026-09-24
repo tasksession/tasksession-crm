@@ -1,0 +1,239 @@
+/* Project tabs toolbar — bulk/view 18px; search slightly smaller (15px) */
+.project-tabs .search > .search-icon .ts-icon,
+.project-tabs .search > .search-icon.border-btn-a .ts-icon,
+.project-tabs .search > .search-icon svg {
+    width: 15px !important;
+    height: 15px !important;
+    min-width: 15px !important;
+    min-height: 15px !important;
+    max-width: 15px !important;
+    max-height: 15px !important;
+}
+.project-tabs .pm-trash .border-btn-a .ts-icon,
+.project-tabs .pm-trash .border-btn-a svg,
+.project-tabs #bulkSelectTab .ts-icon,
+.project-tabs #bulkSelectTab svg,
+.project-tabs .media-view-toggle__btn .ts-icon,
+.project-tabs .media-view-toggle__btn svg {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    max-width: 18px !important;
+    max-height: 18px !important;
+}
+
+/* Kanban view toggle (matches media vault) */
+.project-tabs .media-view-toggle {
+    display: inline-flex;
+    align-items: stretch;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-button-color);
+    overflow: hidden;
+    margin-right: 0;
+    border-radius: var(--button-border-radius) !important;
+    background: transparent;
+    box-shadow: none !important;
+}
+
+.project-tabs .media-view-toggle__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 5px 7px;
+    color: var(--title-color);
+    text-decoration: none;
+    border-right: 1px solid var(--border-button-color);
+    line-height: 0;
+    box-shadow: none !important;
+}
+
+.project-tabs .media-view-toggle__btn:last-child {
+    border-right: none;
+}
+
+.project-tabs .media-view-toggle:hover {
+    border-color: var(--border-button-color);
+}
+
+.project-tabs .media-view-toggle__btn:hover {
+    background: transparent;
+    color: var(--border-button-font-color);
+}
+
+.project-tabs .media-view-toggle__btn.is-active,
+.project-tabs .media-view-toggle__btn.is-active:hover {
+    background: color-mix(in srgb, var(--title-color) 8%, var(--card-body-color));
+    color: var(--title-color);
+}
+
+/* Bulk mode — full-width toolbar, hide standard header controls */
+body.kanban-bulk-mode-active .project-tabs-header {
+    display: none !important;
+}
+
+body.kanban-bulk-mode-active .project-tabs .search,
+body.kanban-bulk-mode-active .project-tabs #kanbanViewToggle,
+body.kanban-bulk-mode-active .project-tabs #leadsViewToggle,
+body.kanban-bulk-mode-active .project-tabs #mediaVaultViewToggle,
+body.kanban-bulk-mode-active .project-tabs #projectMediaViewToggle,
+body.kanban-bulk-mode-active .project-tabs #profileMediaViewToggle {
+    display: none !important;
+}
+
+body.kanban-bulk-mode-active .project-tabs > .row {
+    align-items: center;
+}
+
+/* Same expand pattern as profile media (file-sharing.css) */
+body.kanban-bulk-mode-active .project-tabs .edit-overview-btn.d-none.d-md-block:has(#bulkSelectTab) {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+body.kanban-bulk-mode-active #kanbanBulkToolbar .pm-trash,
+body.kanban-bulk-mode-active #profileTasksBulkToolbar .pm-trash,
+body.kanban-bulk-mode-active #leadsBulkToolbar .pm-trash,
+body.kanban-bulk-mode-active #mediaVaultBulkToolbar .pm-trash,
+body.kanban-bulk-mode-active #projectMediaBulkToolbar .pm-trash,
+body.kanban-bulk-mode-active #profileMediaBulkToolbar .pm-trash {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+/* Profile tasks toolbar — same order as media: Filters then primary action on far right */
+.profile-page--tasks .project-tabs .row > .edit-overview-btn.profile-task-filters,
+.profile-page--tasks .project-tabs .row > .edit-overview-btn.profile-tasks-add-btn {
+    flex-shrink: 0;
+}
+
+.profile-page--tasks .project-tabs .row > .edit-overview-btn.profile-tasks-add-btn {
+    display: flex;
+    align-items: center;
+}
+
+/* Table view — checkboxes always visible (media-vault table pattern) */
+#tasks-table td.bs-checkbox {
+    position: relative;
+    width: 3rem;
+    min-width: 2.5rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#tasks-table td.bs-checkbox .task-table-checkbox,
+#tasks-table th.bs-checkbox .task-table-checkbox {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    width: 100%;
+}
+
+#tasks-table th.bs-checkbox {
+    width: 3rem;
+    min-width: 2.5rem;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#tasks-table .task-checkbox:disabled,
+#tasks-table #select-all-tasks:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+body.kanban-bulk-mode-active #tasks-table tr:has(.task-checkbox:checked) {
+    box-shadow: inset 3px 0 0 var(--primary-color, #0d6efd);
+    background-color: color-mix(in srgb, var(--primary-color, #0d6efd) 5%, transparent);
+}
+
+/* Filters button — clear (X) when a filter is active */
+.kanban-header-filters .action-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.kanban-ai-menu .action-toggle,
+.ai-header-menu .action-toggle {
+    min-width: 34px;
+    justify-content: center;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.kanban-ai-menu .toggle-action ul li .ai-contextual-wrap,
+.ai-header-menu .toggle-action ul li .ai-contextual-wrap {
+    display: block;
+    width: 100%;
+}
+
+.kanban-ai-menu .toggle-action ul li button.ai-contextual-trigger,
+.ai-header-menu .toggle-action ul li button.ai-contextual-trigger {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    color: inherit;
+}
+
+.kanban-header-filters .kanban-filter-clear {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+    color: var(--body-font-color);
+    text-decoration: none;
+    border-radius: 50%;
+    flex-shrink: 0;
+    line-height: 0;
+    width: 15px;
+    height: 15px;
+    background: color-mix(in srgb, #dc3545 12%, transparent);
+}
+
+.kanban-header-filters .kanban-filter-clear:hover {
+    color: #dc3545;
+    background: color-mix(in srgb, #dc3545 22%, transparent);
+}
+
+.kanban-header-filters .kanban-filter-clear svg {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.kanban-header-filters .action-toggle.has-active-filters .kanban-filter-funnel,
+.kanban-header-filters .action-toggle.has-active-filters .mobile-ellipsis {
+    display: none !important;
+}
+
+.kanban-header-filters .action-toggle.has-active-filters .kanban-filter-clear {
+    margin-left: 0;
+}
+
+/* Kanban board: native horizontal swipe on touch devices (avoid JS + browser scroll fighting) */
+@media (max-width: 991.98px) {
+    .board-wrap.board-wrap--native-touch-scroll,
+    .board-wrap {
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
+        scroll-behavior: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .board-wrap .task-card,
+    .board-wrap .task-card a,
+    .board-wrap .task-card button {
+        touch-action: manipulation;
+    }
+
+    .board-wrap.is-grabbing {
+        cursor: grabbing;
+    }
+}

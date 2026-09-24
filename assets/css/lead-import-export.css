@@ -1,0 +1,622 @@
+/* Lead Import/Export Wizard Styles */
+
+
+/* Step List Container - Light grey rounded rectangle with shadow */
+.step-list {
+   
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Step Item */
+.step-list__step {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    z-index: 2;
+}
+
+/* Add chevron connector after each step (except last) */
+.step-list__step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M7 5L13 10L7 15' stroke='%23d0d0d0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    margin-top: 0;
+}
+
+/* Step Content (dl element) */
+.step-list__step-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    gap: 15px;
+}
+
+/* Step Order (dt element - "Step 1", "Step 2", etc.) */
+.step-list__step-order {
+    font-size: 0; /* Hide the text content */
+    position: relative;
+    width: 40px; /* Match circle width */
+    height: 40px;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+/* Step Description (dd element - "Upload File", "Match Fields", etc.) */
+.step-list__step-description {
+    font-size: 13px;
+    text-align: left;
+    color: #666;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.3;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Step Heading (span inside description - "Step 1", "Step 2", etc.) */
+.step-list__step-description .step-heading {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+/* Create circle using ::before pseudo-element on step-order */
+.step-list__step-order::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* Add step number inside circle using ::after */
+.step-list__step-order::after {
+    content: attr(data-step-number);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+    color: #666;
+    z-index: 3;
+}
+
+/* Set step numbers for each step */
+.step-list__step[data-step="1"] .step-list__step-order::after {
+    content: '1';
+}
+
+.step-list__step[data-step="2"] .step-list__step-order::after {
+    content: '2';
+}
+
+.step-list__step[data-step="3"] .step-list__step-order::after {
+    content: '3';
+}
+
+.step-list__step[data-step="4"] .step-list__step-order::after {
+    content: '4';
+}
+
+/* Done/Completed Step - Teal circle with checkmark */
+.step-list__step--done .step-list__step-order::before {
+    background: #14b8a6; /* Teal */
+}
+
+.step-list__step--done .step-list__step-order::after {
+    content: '✓';
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.step-list__step--done .step-list__step-description {
+    color: #666; /* Dark grey for completed */
+}
+
+/* Highlight/Active Step - Dark blue circle with white number */
+.step-list__step--highlight .step-list__step-order::before {
+    background: var(--primary-button-color) !important;
+    color: var(--primary-button-font-color) !important;
+}
+.step-list__step--highlight .step-list__step-order::after {
+    color: #ffffff;
+}
+
+.step-list__step--highlight .step-list__step-description {
+     color: var(--body-font-color) !important;
+}
+
+/* Inactive Step - Light grey circle with dark grey number (default) */
+.step-list__step:not(.step-list__step--done):not(.step-list__step--highlight) .step-list__step-order::before {
+    background: #e0e0e0; /* Light grey */
+}
+
+.step-list__step:not(.step-list__step--done):not(.step-list__step--highlight) .step-list__step-order::after {
+    color: #666; /* Dark grey */
+}
+
+.step-list__step:not(.step-list__step--done):not(.step-list__step--highlight) .step-list__step-description {
+    color: #666; /* Dark grey */
+}
+
+/* Step Content */
+.wizard-content {
+    min-height: 400px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.step-content {
+    display: none;
+}
+
+.step-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Step 1 Card - Specific styling */
+.step-content[data-step="1"] .settings-card {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Upload Dropzone */
+.upload-dropzone {
+    border: 2px dashed var(--border-color, #ddd);
+    border-radius: 8px;
+    padding: 60px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--card-body-color, #fff);
+}
+
+.upload-dropzone:hover {
+    border-color: var(--primary-color, #007bff);
+    background: rgba(0, 123, 255, 0.02);
+}
+
+.upload-dropzone.dragover {
+    border-color: var(--primary-color, #007bff);
+    background: rgba(0, 123, 255, 0.05);
+}
+
+.upload-icon {
+ color: var(--secondary-color, #6c757d);
+    text-align: center;
+    margin: 0 auto;
+}
+
+.upload-dropzone:hover .upload-icon {
+    color: var(--primary-color, #007bff);
+}
+
+.upload-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--title-color, #333);
+    margin-bottom: 8px;
+}
+
+.upload-hint {
+    font-size: 13px;
+    color: var(--secondary-color, #6c757d);
+}
+
+.file-info {
+    padding: 15px;
+    background: var(--card-body-color, #f8f9fa);
+    border-radius: 6px;
+    border: 1px solid var(--border-color, #ddd);
+}
+
+.file-name {
+    font-weight: 500;
+    color: var(--title-color, #333);
+}
+
+/* Field Mapping Table */
+.field-mapping-table-wrapper {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.field-mapping-table {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.field-mapping-table th {
+    background: transparent;
+    font-weight: 600;
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--border-color, #e0e0e0);
+    color: var(--title-color, #333);
+    font-size: 14px;
+    text-align: left;
+}
+
+.field-mapping-table td {
+    padding: 16px 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+
+.field-mapping-table td.text-muted {
+    color: #6c757d;
+    font-size: 13px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.field-mapping-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.field-mapping-table select {
+    width: 100%;
+    padding: 10px 35px 10px 12px;
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 6px;
+    background: var(--card-body-color, #fff);
+    color: var(--body-font-color, #333);
+    font-size: 14px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    cursor: pointer;
+}
+
+.field-mapping-table select:focus {
+    outline: none;
+    border-color: var(--primary-color, #007bff);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Preview Table */
+.preview-table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.preview-table th {
+    background: var(--card-body-color, #f8f9fa);
+    font-weight: 600;
+    padding: 12px;
+    border-bottom: 2px solid var(--border-color, #ddd);
+    white-space: nowrap;
+}
+
+.preview-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-color, #ddd);
+    font-size: 13px;
+}
+
+.preview-table tbody tr:hover {
+    background: rgba(0, 123, 255, 0.02);
+}
+
+.preview-stats {
+    font-size: 14px;
+    color: var(--secondary-color, #6c757d);
+    font-weight: 500;
+}
+
+/* Wizard Navigation - Fixed at bottom within content area */
+.wizard-navigation {
+    position: fixed;
+    bottom: 0;
+    left: 250px; /* Match sidebar width - default expanded state */
+    right: 0;
+    background: var(--card-body-color, #fff);
+    padding: 20px;
+    border-top: 1px solid var(--border-color, #ddd);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    margin-top: 0;
+    transition: left 0.3s ease; /* Match sidebar transition */
+}
+
+/* Ensure Next button is on the right */
+.wizard-navigation .d-flex.justify-content-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wizard-navigation .d-flex.col-gap-10 {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* When sidebar is shrunk, adjust left position to match page-content margin */
+.sidebar-admin.shrink ~ .row .page-content .wizard-navigation {
+    left: 70px; /* Match shrunk sidebar width */
+}
+
+/* Add padding to wizard content to prevent it from being hidden behind fixed navigation */
+.import-wizard {
+    padding-bottom: 100px; /* Space for fixed navigation */
+}
+
+/* Responsive: On mobile, navigation should be full width */
+@media (max-width: 991px) {
+    .wizard-navigation {
+        left: 0 !important;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wizard-steps-container {
+        padding: 20px 15px;
+    }
+
+    .wizard-steps {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .step-indicator {
+        flex: 0 0 calc(50% - 10px);
+        margin-bottom: 20px;
+    }
+
+    .step-connector {
+        display: none;
+    }
+
+    .step-label {
+        font-size: 11px;
+        max-width: 100px;
+    }
+
+    .step-circle {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .step-number-label {
+        font-size: 10px;
+    }
+
+    .upload-dropzone {
+        padding: 40px 15px;
+    }
+
+    .wizard-navigation {
+        flex-direction: column;
+    }
+
+    .wizard-navigation .d-flex {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .wizard-navigation .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .step-indicator {
+        flex: 0 0 100%;
+    }
+
+    .step-label {
+        max-width: 100%;
+    }
+}
+
+/* Loading State */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--primary-color, #007bff);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Alert Styles */
+.import-wizard .alert {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.import-wizard .alert-success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.import-wizard .alert-danger {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.import-wizard .alert-warning {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    color: #856404;
+}
+
+.import-wizard .alert-info {
+    background: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}
+
+/* Settings Card */
+.settings-card {
+    background: var(--card-body-color, #fff);
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 8px;
+    margin-bottom: 20px;
+	
+}
+
+.settings-card .card-body {
+    padding: 25px;
+}
+
+.settings-card h3 {
+    color: var(--title-color);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.settings-card .text-muted {
+    color: var(--body-font-color);
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Form Styles */
+
+.import-wizard .form-label {
+    font-weight: 600;
+    color: var(--title-color, #333);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.import-wizard .form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 4px;
+    font-size: 14px;
+    background: var(--card-body-color, #fff);
+    color: var(--body-font-color, #333);
+}
+
+.import-wizard .form-control:focus {
+    outline: none;
+    border-color: var(--primary-color, #007bff);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.import-wizard .form-text {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Table Styles */
+.import-wizard .table-fancy {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.import-wizard .table-fancy th,
+.import-wizard .table-fancy td {
+    border-right: 1px solid var(--border-color, #ddd);
+}
+
+.import-wizard .table-fancy th:last-child,
+.import-wizard .table-fancy td:last-child {
+    border-right: none;
+}
+
+.scroll-x {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Import Results Box (no alert styling) */
+.import-results-box {
+    padding: 20px;
+    background: var(--card-body-color, #fff);
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #ddd);
+}
+
+.import-results-box h5 {
+    color: var(--title-color, #333);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.import-results-box p {
+    color: var(--body-font-color, #333);
+    font-size: 14px;
+    line-height: 1.6;
+}
+

@@ -1,0 +1,82 @@
+/* Lead Kanban board – drag preview, drop slot, scroll lock (paired with lead-board.js) */
+.board-wrap.drag-scroll-lock {
+    overflow-x: hidden !important;
+}
+
+.board-wrap.drag-scroll-persist {
+    overflow-x: hidden !important;
+    overscroll-behavior-x: contain;
+}
+
+body.lead-drag-active {
+    user-select: none;
+}
+
+.lead-drop-slot {
+    box-sizing: border-box;
+    margin: 10px 12px;
+    border: 2px dashed rgba(0, 123, 255, 0.35);
+    border-radius: 6px;
+    background: rgba(0, 123, 255, 0.08);
+    pointer-events: none;
+    flex-shrink: 0;
+    transition: height 0.15s ease, min-height 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lead-drop-slot-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(0, 123, 255, 0.9);
+    pointer-events: none;
+    user-select: none;
+}
+
+.lead-card {
+    cursor: move;
+    transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lead-card.dragging {
+    opacity: 0.55;
+    transform: scale(0.98);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.lead-drag-preview {
+    transform: rotate(3.93deg) scale(1.045);
+    transition: transform 220ms cubic-bezier(0.33, 1, 0.68, 1);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+    opacity: 1 !important;
+    background: #ffffff !important;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 9999;
+    -webkit-font-smoothing: antialiased;
+    backface-visibility: hidden;
+}
+
+/* Lead sidebar: long custom-field values stack under the label */
+#lead-sidebar .summary-item.summary-item--stacked {
+    flex-direction: column;
+    align-items: flex-start !important;
+    width: 100%;
+    gap: 4px;
+}
+
+#lead-sidebar .summary-item.summary-item--stacked .summary-label {
+    min-width: 0;
+    margin-bottom: 2px;
+}
+
+#lead-sidebar .summary-item.summary-item--stacked .summary-value,
+#lead-sidebar .summary-value.summary-value--long {
+    width: 100%;
+    max-width: 100%;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.45;
+}
